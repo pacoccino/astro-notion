@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import {queryArticles} from '../../content/articles'
+import {queryArticles} from '../../lib/content/articles'
 
 const articles = await queryArticles()
 
@@ -21,4 +21,4 @@ const articles = await queryArticles()
 			}
 		</ul>
 	</section>
-</Layout>	
+</Layout>

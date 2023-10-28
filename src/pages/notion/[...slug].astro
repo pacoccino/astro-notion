@@ -1,7 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import {Article, queryArticle, queryArticles} from '../../content/articles'
-import { queryDatabase, renderProperty, getPageContent } from '../../lib/notion'
+import type {PartialArticle} from '../../lib/content/articles'
+import {queryArticle, queryArticles} from '../../lib/content/articles'
 
 //import { NotionRenderer } from 'react-notion-x'
 //import { NotionAPI } from 'notion-client'
@@ -14,7 +14,7 @@ export async function getStaticPaths() {
     //console.log(posts)
     //console.log(posts[0])
 
-	return articles.map((partialArticle) => {
+	return articles.map((partialArticle: PartialArticle) => {
         return {
             params: {
                 slug: partialArticle.slug,
@@ -28,7 +28,7 @@ export async function getStaticPaths() {
 }
 
 interface Props {
-	partialArticle: Article;
+	partialArticle: PartialArticle;
 }
 
 const { partialArticle } = Astro.props;

@@ -1,5 +1,5 @@
-import config from '../config'
-import { queryDatabase, getPage, getPageContent, renderProperty } from '../lib/notion'
+import config from '../../config'
+import { queryDatabase, getPage, getPageContent, renderProperty } from '../notion'
 
 export interface PartialArticle {
 	id: string;
@@ -32,7 +32,6 @@ export async function queryArticle(articleId: string): Promise<Article> {
         page,
         pageContent,
     }
-    console.log(pageContent)
 
     return article;
 }

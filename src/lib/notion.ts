@@ -1,8 +1,6 @@
 import { Client, isFullBlock, isFullPage, isFullPageOrDatabase } from "@notionhq/client"
-import type { PropertyItemObjectResponse, PageObjectResponse, RichTextItemResponse, DatabaseObjectResponse, PartialBlockObjectResponse, PartialDatabaseObjectResponse, PartialPageObjectResponse, BlockObjectResponse, GetPageResponse } from "@notionhq/client/build/src/api-endpoints"
-import type { Page } from "astro"
+import type { PageObjectResponse, RichTextItemResponse, DatabaseObjectResponse, BlockObjectResponse } from "@notionhq/client/build/src/api-endpoints"
 import config from '../config'
-
 
 const notion = new Client({ auth: config.NOTION_API_KEY })
 
