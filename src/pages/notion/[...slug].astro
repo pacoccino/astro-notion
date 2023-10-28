@@ -1,0 +1,47 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import {Article, queryArticle, queryArticles} from '../../content/articles'
+import { queryDatabase, renderProperty, getPageContent } from '../../lib/notion'
+
+//import { NotionRenderer } from 'react-notion-x'
+//import { NotionAPI } from 'notion-client'
+//import 'react-notion-x/src/styles.css'
+
+
+export async function getStaticPaths() {
+    const articles = await queryArticles()
+
+    //console.log(posts)
+    //console.log(posts[0])
+
+	return articles.map((partialArticle) => {
+        return {
+            params: {
+                slug: partialArticle.slug,
+            },
+            props: {
+                partialArticle,
+            },
+        };
+    });
+
+}
+
+interface Props {
+	partialArticle: Article;
+}
+
+const { partialArticle } = Astro.props;
+
+/*
+const notion = new NotionAPI()
+const recordMap = await notion.getPage(post.id)
+*/
+const article = await queryArticle(partialArticle.id)
+
+---
+
+<Layout title="Notion blog article.">
+    <h1>{article.title}</h1>
+    <!-- <NotionRenderer recordMap={recordMap} fullPage={false} darkMode={false} /> -->
+</Layout>

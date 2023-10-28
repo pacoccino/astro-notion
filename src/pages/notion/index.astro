@@ -1,0 +1,24 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import {queryArticles} from '../../content/articles'
+
+const articles = await queryArticles()
+
+---
+
+<Layout title="Notion blog articles.">
+	<section>
+		<ul>
+			{
+				articles.map((article) => (
+					<li>
+						<a href={`/notion/${article.slug}/`}>
+							<h4 class="title">{article.title}</h4>
+							<p class="title">{article.slug}</p>
+						</a>
+					</li>
+				))
+			}
+		</ul>
+	</section>
+</Layout>	
